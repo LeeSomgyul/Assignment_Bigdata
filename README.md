@@ -69,8 +69,13 @@ boston_df의 정보를 확인한다.
     from sklearn.metrics import mean_squared_error, r2_score
 1) LinearRegression: 머닝러신 회귀분석을 위한 함수(회귀 모델 구현 기능)
 2) train_test_split: 데이터셋 분리작업을 위한 함수(데이터를 학습 세트와 테스트 세트로 나누는 기능)
-3) mean_squared_error: 성능 측정을 위한 함수(예측값과 실제값 사이의 제곱 오차를 평균하여 모델의 예측 성능을 평가)
+3) mean_squared_error: 성능 측정을 위한 함수(예측값과 실제값 사이의 제곱 오차를 평균하여 모델의 예측 성능을 평가, 평가지표 중 MSE로 실제값과 이상값 사이의 차이가 크다)
 4) r2_score: 모델의 적합성 평가를 위한 함수
+
+#### ✅ In [9]
+    Y = boston_df['PRICE']
+    X = boston_df.drop(['PRICE'], axis=1, inplace=False)
+X를 독립변수, Y를 종속변수로 설정
 
 
 

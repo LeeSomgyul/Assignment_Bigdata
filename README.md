@@ -62,7 +62,7 @@ boston_df의 정보를 확인한다.
 ###### <img width="300" alt="image" src="https://github.com/LeeSomgyul/Assignment_Bigdata/assets/140570847/b311b983-bec7-42a0-a444-9a1664960703">
 
 
-### 🖥️분석 모델 구축, 결과 분석 및 시각화
+### 🖥️선형 회귀를 이용해 모델 구축하기
 #### ✅ In [8]
     from sklearn.linear_model import LinearRegression
     from sklearn.model_selection import train_test_split
@@ -118,5 +118,29 @@ train_test_split()함수를 통해 데이터셋을 훈련용 데이터 7, 테스
 
 #### ☑️ Out [14]
 <img width="300" alt="image" src="https://github.com/LeeSomgyul/Assignment_Bigdata/assets/140570847/3ed78f60-5afb-4618-90ef-7bfa6e1a3b36">
-    
 
+#### ✅ In [15]
+    print('Y 절편 값:', lr.intercept_)
+    print('회귀 계수 값:', np.round(lr.coef_, 1))
+1) Y 절편: 독립변수 X가 0일때 종속변수 Y의 값(주택의 방 개수, 비율(X) 등이 0일 때 기본 가격(Y))
+2) 회귀 계수: X값이 1 증가할 때 Y값이 얼마나 증가 또는 감소하는지를 나타내는 값
+
+#### ☑️ Out [15]
+<img width="650" alt="image" src="https://github.com/LeeSomgyul/Assignment_Bigdata/assets/140570847/38f00899-a4bc-4701-a7f2-bcbfeb3ce4fb">
+
+#### ✅ In [16]
+    coef = pd.Series(data = np.round(lr.coef_, 2), index=X.columns)
+    coef.sort_values(ascending=False)
+1) 회귀 계수를(lr.coef_) 2째자리까지 반올림(np.round)한다.
+2) 시각화 및 X컬럼으로 인덱스 접근이 가능하도록(index=X.columns) 판다스 시리즈 배열형식으로 변환한다.(pd.Series)
+3) .sort_values(ascending=False): 내림차순으로 정렬
+
+#### ☑️ Out [16]
+<img width="200" alt="image" src="https://github.com/LeeSomgyul/Assignment_Bigdata/assets/140570847/38567d4e-9de1-4a84-9198-716658afeda7">
+
+
+### 🖥️회귀 분석 결과를 산점도 + 선형 회귀 그래프로 시각화하기
+#### ✅ In [17]
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    

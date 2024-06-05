@@ -143,4 +143,15 @@ train_test_split()함수를 통해 데이터셋을 훈련용 데이터 7, 테스
 #### ✅ In [17]
     import matplotlib.pyplot as plt
     import seaborn as sns
+시각화를 하기 위한 라이브러리를 import한다.
+
+#### ✅ In [18]
+    fig, axs = plt.subplots(figsize = (16, 16), ncols=3, nrows=5)
+    
+    x_features = ['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT']
+    
+    for i, feature in enumerate(x_features):
+        row = int(i/3)
+        col = i%3
+        sns.regplot(x=feature, y='PRICE', data=boston_df, ax=axs[row][col])
     
